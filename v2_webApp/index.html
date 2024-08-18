@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Principal</title>
+        <meta charset="utf-8">
+        <style>
+            a:link{
+                color:#E2E2E2;
+                text-decoration:none;
+            }
+            a:visited{
+                color:#E2E2E2;
+            }
+            a:hover{
+                color:#3A86FF;
+            }
+            body{
+                background-color:#121212;
+                font-family: "Inter", sans-serif;
+            }
+            .header1{
+                position:fixed;
+                top:30px;
+                width:95%;
+                display:flex;
+                background-color:#121212;
+                flex-direction:row;
+                justify-content:end;
+                font-size:18px;
+                gap:40px;
+                color:#E2E2E2;
+                margin: 0px 30px;
+
+            }
+            .header-extra
+            {
+                position:fixed;
+                top:0;
+                height:30px;
+                width:100%;
+                background-color:#121212;
+            }
+            .btn-header1{
+                background-color:#3A86FF;
+                color:#121212;
+                border-radius: .25rem;
+                cursor:pointer;
+                transition: all 250ms;
+                width:50px;
+                height:50px;
+                font-size:25px;
+                border: 1px solid;
+            }
+            .btn-meio1{
+                background-color:#E63946;
+                color:#121212;
+                border-radius: .25rem;
+                cursor:pointer;
+                transition: all 250ms;
+                width:200px;
+                height:50px;
+                font-size:18px;
+                border: 1px solid;
+            }
+            #btn-meio1-id:hover{
+                transform: translateY(-1px);
+            }
+            #btn-header1-id:hover{
+                transform: translateY(-1px);
+            }
+            #logo-header1{
+                margin-right: auto;
+                color:#E2E2E2;
+            }
+            .meio1{
+                text-align:center;
+                color:#E2E2E2;
+                font-size:55px;
+                margin-top:200px;
+            }
+            .meio2{
+                margin:130px 200px;
+                text-align:left;
+                color:#E2E2E2;
+                font-size:35px;
+            }
+            .img-meio2
+            {
+                float:left;
+                border-radius:6%;
+                border: 2px solid white;
+                width:690px;
+                height:540px;
+                margin-top:80px;
+            }
+            .img-meio2_2
+            {
+                float:right;
+                border-radius:6%;
+                border: 2px solid white;
+                width:690px;
+                height:540px;
+                margin-top:210px;
+            }
+            .meio2_2{
+                margin:200px 200px;
+                text-align:right;
+                color:#E2E2E2;
+                font-size:35px;
+            }
+            .meio2_3{
+                margin:310px 200px;
+                text-align:left;
+                color:#E2E2E2;
+                font-size:35px;
+            }
+            .footer1{
+                width:95%;
+                display:flex;
+                background-color:#121212;
+                flex-direction:row;
+                justify-content:space-between;
+                font-size:18px;
+                color:#E2E2E2;
+                margin: 30px;
+            }
+            .meio4{
+                width:100%;
+                height:500px;
+                background-color:#3A86FF;
+                color:#121212;
+                font-size:27px;
+            }
+            .meio4-selecao{
+                margin:0px 240px;
+                padding-top:10px;
+            }
+            .meio4-videos{
+                display:flex;
+                flex-direction:row;
+                justify-content:space-evenly;
+            }
+            .meio4-article{
+                margin:40px;
+            }
+            ul{
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <section>
+
+            <section class="header-extra"></section>
+            <header class="header1">
+                <p id="logo-header1">Gerenciador de projetos</p>
+                    <p><a href="aplicacao.html">Aplicação</a></p>
+                    <p><a href="calendario.html">Calendário</a></p>
+            </header>
+
+        </section>
+
+        <section class="meio1">
+
+            <p>Guia para utilização</p>
+            <pre style="font-size:25px; color:#3A86FF;">O gerenciador de projetos é onde você pode confiar o
+ planejamento para execução dos seus novos projetos</pre>
+             <button id="btn-meio1-id" class="btn-meio1"><a style="color:#121212;" href="aplicacao.html">Ir para aplicação ➤</a></button>
+
+        </section>
+
+        <section class="meio2">
+
+            <p>Como funciona?</p>
+            <pre style="font-size:20px; color:#3A86FF; width:500px;">
+    &lt;Participe da criação de projetos, com o conteúdo que você preferir,
+    adicione tags e filtre para ajudar na organização,
+     utilize o calendário de eventos para ficar atento a prazos importantes.&gt;
+        </pre>
+        <img id="img-meio2-id" class="img-meio2" src="index_img-1.png" alt="print">
+
+        </section>
+
+        <section class="meio2_2">
+
+            <p>Conheça a plataforma!</p>
+                           <pre style="font-size:20px; color:#3A86FF;">
+    &lt;Crie quantos projetos desejar, preenchendo o documento com todas as
+                informações necessárias para um planejamento eficiente!
+    Adicione arquivos e visualize dados com o auxílio da ferramenta&gt;
+                             </pre>
+
+                             <pre style="font-size:20px; color:#3A86FF;">
+&lt;Fique ligado no nosso portal, tenha seus links cadastrados ao seu
+alcance quando preferir e esteja em dia com nossa
+ política de segurança inovadora!&gt;
+                            </pre>
+
+        <img id="img-meio2-id" class="img-meio2_2" src="index_img-2.png" alt="print">
+
+        </section>
+
+        <section class="meio2_3">
+            <p>Calendário</p>
+            <pre style="font-size:20px; color:#3A86FF; width:500px;">
+&lt;O nosso calendário é uma ferramenta digital que
+permite aos usuários organizar eventos,
+compromissos e tarefas de forma eficiente e acessível.
+Através de uma interface intuitiva, os usuários podem
+visualizar e gerenciar seus compromissos diários,
+semanais ou mensais diretamente de sua aplicação.&gt;
+                    </pre>
+                    <pre style="font-size:20px; color:#3A86FF; width:500px;">
+&lt;Ele está diretamente ligado com os projetos criados
+por você e você pode acessá-lo quando quiser!&gt;
+                            </pre>
+        </section>
+
+        </section>
+
+        <section class="meio4">
+
+            <section class="meio4-selecao">
+                <p>Conteúdo selecionado sobre o assunto!</p>
+            </section>
+
+            <section class="meio4-videos">
+
+            <article class="meio4-article">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dKiTaHtVpfQ?si=B4OmwhMiaoWep_HW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </article>
+
+            <article class="meio4-article">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/_Pwg2fz6pYc?si=FzVVzWUv0eswzfT2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </article>
+
+            </section>
+
+        </section>
+
+        <section>
+            <footer class="footer1">
+                <section style="width:200px;">
+                    <p>Sobre nós</p>
+                    <p>Oferecemos serviços que ajudarão você a lidar com seus projetos!</p>
+                </section>
+                <section>
+                    <ul>
+                        <p>Links úteis</p>
+                        <li>Instagram</li>
+                        <li>𝕏</li>
+                        <li>WhatsApp</li>
+                        <li>GitHub</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <p>Guia de navegação</p>
+                        <li><a href="calendario.html">Calendário</a></li>
+                        <li><a href="aplicacao.html">Aplicação</a></li>
+                    </ul>
+                </section>
+            </footer>
+        </section>
+
+    </body>
+</html>
+

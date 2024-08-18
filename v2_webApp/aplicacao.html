@@ -1,0 +1,824 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Aplicacao</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--CSS Destinado a header, footer, barra lateral e corpo da página-->
+        <style>
+
+            a:link{
+                color:#E2E2E2;
+                text-decoration:none;
+            }
+
+            a:visited{
+                color:#E2E2E2;
+            }
+
+            a:hover{
+                color:#3A86FF;
+            }
+
+            body{
+                background-color:#121212;
+                font-family: "Inter", sans-serif;
+                color:#E2E2E2;
+            }
+
+            #headerIndex
+            {
+                display:flex;
+                justify-content:flex-end;
+                margin:25px;
+            }
+
+            .principal_Index
+            {
+                margin:150px;
+                padding-left:150px;
+            }
+
+            .documentosIndex
+            {
+                display:flex;
+                flex-direction:row;
+                justify-content: flex-start;
+                margin-top:10px;
+                gap:20px;
+                flex-wrap:wrap;
+            }
+
+            .barraLateral
+            {
+                float:left;
+                position:fixed;
+                width:250px;
+                z-index:1;
+                height:700px;
+                border-right: 1px dashed #E2E2E2;
+            }
+
+            .barraLateral_Itens
+            {
+                margin-top:55px;
+                display:flex;
+                padding-left:30px;
+                flex-direction:column;
+                gap:20px;
+            }
+
+            .barraLateral_Item
+            {
+                border-bottom: 1px dashed #E2E2E2;
+                width:150px;
+                padding-bottom:10px;
+            }
+
+            .footer1{
+                width:95%;
+                display:flex;
+                background-color:#121212;
+                flex-direction:row;
+                justify-content:space-between;
+                font-size:18px;
+                color:#E2E2E2;
+                margin: 30px;
+                position:relative;
+                z-index:2;
+            }
+
+            ul{
+                list-style: none;
+            }
+
+            .header1{
+                position:fixed;
+                top:30px;
+                width:95%;
+                display:flex;
+                background-color:#121212;
+                flex-direction:row;
+                justify-content:end;
+                z-index:1;
+                font-size:18px;
+                gap:40px;
+                color:#E2E2E2;
+                margin: 0px 30px;
+                padding-bottom:15px;
+
+            }
+            .header-extra
+            {
+                position:fixed;
+                top:0;
+                z-index:1;
+                height:30px;
+                width:100%;
+                background-color:#121212;
+            }
+            .btn-header1{
+                background-color:#3A86FF;
+                color:#121212;
+                border-radius: .25rem;
+                cursor:pointer;
+                transition: all 250ms;
+                width:50px;
+                height:50px;
+                font-size:25px;
+                border: 1px solid;
+            }
+            #btn-header1-id:hover{
+                transform: translateY(-1px);
+            }
+            #logo-header1{
+                margin-right: auto;
+                color:#E2E2E2;
+            }
+            .header-extra
+            {
+                position:fixed;
+                top:0;
+                height:30px;
+                width:100%;
+                background-color:#121212;
+            }
+
+        </style>
+
+        <!--CSS Destinado ao modal e ao formulario-->
+        <style>
+            .modalIndex
+            {
+                display: none;
+                position: fixed;
+                z-index: 3;
+                left: 0;
+                top: 0;
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+            }
+
+            .modal-content
+            {
+                background-color: #1E1E1E;
+                margin: 15% auto;
+                padding: 20px;
+                border: 2px solid #888;
+                border-radius: 5px;
+                width: 60%;
+            }
+
+            .modal-top
+            {
+                display:flex;
+                border-bottom:1px dashed #E2E2E2;
+                max-width:100%;
+                margin-top:40px;
+                font-weight:bold;
+                margin-bottom:50px;
+                padding-bottom:10px;
+            }
+
+            .form_modal
+            {
+                display:grid;
+                place-content: center;
+                padding-left:100px;
+            }
+
+            .form-input
+            {
+                margin-bottom:20px;
+                background-color:#121212;
+                border-radius: 8px;
+                width:40px;
+                line-height: 28px;
+                color:#E2E2E2;
+                outline: none;
+                width: 100%;
+                border: none;
+            }
+
+            .form-input-data
+            {
+                margin-bottom:20px;
+                background-color:white;
+                border-radius: 8px;
+                width:40px;
+                line-height: 28px;
+                color:#121212;
+                outline: none;
+                width: 15%;
+                border: none;
+            }
+
+            .form-label
+            {
+                font-weight:bold;
+            }
+
+            .form-input-area
+            {
+                margin-bottom:20px;
+                background-color:#121212;
+                border-radius:2%;
+                color:#E2E2E2;
+                outline: none;
+                width: 100%;
+                border: none;
+            }
+
+            .fecharIndex
+            {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .fecharIndex:hover,
+            .fecharIndex:focus
+            {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        </style>
+
+        <!--CSS Destinado ao card do conteúdo-->
+        <style>
+
+            .card
+            {
+                width: 150px;
+                height: 150px;
+                border-radius: 20px;
+                background: #121212;
+                position: relative;
+                cursor:pointer;
+                padding: 1.8rem;
+                border: 2px solid #1E1E1E;
+                overflow: hidden;
+            }
+
+            .card-details
+            {
+                color: #3A86FF;
+                font-size:35px;
+                height: 100%;
+                display: block;
+                padding-left:20px;
+            }
+
+            .card-details-abrir
+            {
+                color: #3A86FF;
+                font-size:35px;
+                height: 100%;
+                display: grid;
+                gap:5px;
+                place-content: center;
+            }
+
+            .text-title
+            {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .text-title-documentos
+            {
+                font-size: 17px;
+                font-weight: normal;
+            }
+
+            .text-title-abrir
+            {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            .card-sombra
+            {
+                width: 150px;
+                height: 150px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+            }
+
+            .btn-form
+            {
+                width: fit-content;
+                min-width: 100px;
+                padding: 8px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 20px -20px;
+                cursor: pointer;
+                color:#121212;
+                background-color: #3A86FF;
+                transition: all 0.2s ease-in-out 0ms;
+                border: 2.5px solid #3A86FF;
+                font-weight:600;
+            }
+
+            .btn-dropdown-links
+            {
+                width: fit-content;
+                width: 115px;
+                height: 40px;
+                padding: 8px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 20px -20px;
+                cursor: pointer;
+                color:#121212;
+                background-color: #3A86FF;
+                transition: all 0.2s ease-in-out 0ms;
+                border: 2.5px solid #3A86FF;
+                font-weight:600;
+            }
+
+            button:hover
+            {
+                background-color: #3370D1;
+                box-shadow: 0px 0px 20px -18px;
+            }
+
+            button:active
+            {
+                transform: scale(0.95);
+            }
+
+        </style>
+
+        <!--CSS destinado ao formulario-->
+        <style>
+            .input
+            {
+                max-width: 190px;
+                height: 44px;
+                background-color: #05060f0a;
+                border-radius: .5rem;
+                border-color: #E2E2E2;
+                padding: 0 1rem;
+                border: 2px solid;
+                color: #E2E2E2;
+                font-size: 1rem;
+            }
+
+            .label
+            {
+                display: block;
+                margin-bottom: .3rem;
+                font-size: .9rem;
+                font-weight: bold;
+                color: #05060f99;
+            }
+
+        </style>
+
+        <!--CSS destinado ao visualizador de links-->
+        <style>
+
+            .dropdown_links
+            {
+                display: none;
+                position: absolute;
+                background-color: #121212;
+                color:#3A86FF;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+
+            .dropdown:hover .dropdown_links
+            {
+                display: block;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <!--Header-->
+        <section>
+
+            <section class="header-extra"></section>
+            <header class="header1">
+                <p id="logo-header1">Gerenciador de projetos</p>
+                    <p><a href="index.html">Principal</a></p>
+                    <p><a href="calendario.html">Calendário</a></p>
+            </header>
+
+        </section>
+
+        <!--Barra lateral-->
+        <section class="barraLateral">
+
+            <aside class="barraLateral_Itens">
+
+                <p class="barraLateral_Item"><a>🌐Portal</a></p>
+                <p class="barraLateral_Item"><a>🔐Segurança</a></p>
+                <p class="barraLateral_Item"><a>📈Gráficos</a></p>
+
+                <section class="dropdown">
+                    <p>📑Links registrados</p>
+                    <button class="dropdown_btn btn-dropdown-links" style="font-weight>bold; font-size:20px;">⬇</button>
+                    <span id="dropdown_links_id" class="dropdown_links">
+                    </span>
+                </section>
+
+            </aside>
+
+        </section>
+
+        <!--corpo da página-->
+        <section class="principal_Index">
+
+            <h1>Projetos</h1>
+            <p>Aqui ficam os seus projetos!</p>
+
+
+            <!-- começo do modal -->
+            <section class="modalIndex" id="modaljs">
+
+                <section class="modal-content">
+                    <span class="fecharIndex" id="fechar"  onclick="fecharModal(); location.reload()">&times;</span>
+                    <span class="modal-top">Crie seu projeto</span>
+                    <form class="form_modal">
+                        <label class="form-label">Titulo</label><br>
+                        <input class="form-input" type="text" id="tituloAdd"><br>
+                        <label class="form-label">Anotação</label><br>
+                        <textarea class="form-input-area" id="conteudoAdd" rows="30" cols="100"></textarea><br>
+                        <label class="form-label">Arquivo (opcional)</label><br>
+                        <input class="form-input" type="file" id="capaAdd"><br>
+                        <label class="form-label">Data limite</label><br>
+                        <input class="form-input-data" type="date" id="dataAdd"><br><br>
+                        <label class="form-label">Registrar link</label><br>
+                        <input class="form-input" type="text" id="linkAdd"><br>
+                        <label class="form-label">Criar tag</label>
+                        <input class="form-input" type="text" id="tagAddCriar"><input type="button" class="btn-form" value="Add tag para seleção" onclick="criarTag(this.form.tagAddCriar.value)"><br>
+                        <br>
+                        <select id="tagAdd">
+                            <option value="">Selecionar Tag</option>
+                            <option value="urgente">Urgente</option>
+                            <option value="media">Médio</option>
+                            <option value="nada">Ok</option>
+                          </select><br>
+                          <input type="button" class="btn-form" value="Add tag ao documento" onclick="tag(this.form.tagAdd.value)"><br>
+                          <p id="tagsAdd"></p><br>
+                        <input type="button" class="btn-form" style="width:100%;font-weight:bold;" value="Cadastrar planejamento" onclick="location.reload(); addArquivo(this.form.tituloAdd.value, this.form.conteudoAdd.value, this.form.linkAdd.value, this.form.dataAdd.value)">
+                    </form>
+                </section>
+
+            </section>
+            <!-- fim do modal -->
+
+            <!--Os documentos criados ficam aqui-->
+            <section class="modalIndex" id="modalDocsjs">
+
+                <section class="modal-content">
+                    <span class="fecharIndex" id="fechar"  onclick="fecharModalDocs()">&times;</span>
+                    <section id="documentosModal"></section>
+                </section>
+
+            </section>
+
+            <section style="margin-bottom:100px;">
+
+             <section class="documentosIndex" id="documentos">
+
+            <article class="card">
+
+                <section class="card-details-abrir">
+                  <p class="text-title-abrir" onclick="abrirModal()">+</p>
+                </section>
+
+            </article>
+
+           </section>
+
+           <p style="float:left;">Ações: </p>
+           <button class="btn-form" style="margin:13px;" onclick="apagar(); location.reload()">apagar</button>
+
+          </section>
+
+          <!--Seção do filtro-->
+            <h1>Filtrar</h1>
+            <p>Aqui você pode filtrar de acordo com suas tags.</p>
+
+            <form style="margin-bottom:30px;" id="btn_tags"></form>
+
+             <section class="documentosIndex" id="documentosTag">
+            </section>
+
+        </section>
+
+    </section>
+
+</section>
+
+        <!--Footer-->
+        <footer class="footer1">
+            <section style="width:200px;">
+                <p>Sobre nós</p>
+                <p>Oferecemos serviços que ajudarão você a lidar com seus projetos!</p>
+            </section>
+            <section>
+                <ul>
+                    <p>Links úteis</p>
+                    <li>Instagram</li>
+                    <li>𝕏</li>
+                    <li>WhatsApp</li>
+                    <li>GitHub</li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <p>Guia de navegação</p>
+                    <li><a href="calendario.html">Calendário</a></li>
+                    <li><a href="index.html">principal</a></li>
+                </ul>
+            </section>
+        </footer>
+
+        <!--Dropdown dos links cadastrados-->
+    <script>
+        //Pegando a lista no localstorage
+         const listaLinks=JSON.parse(localStorage.getItem('lista'));
+
+         let dropdown_links_items=document.getElementById("dropdown_links_id");
+
+         //passando pelos itens
+         for(let i=0;i<listaLinks.length;i++)
+         {
+            for(const item in listaLinks[i])
+            {
+                //mostrando os links registrados
+                dropdown_links_items.innerHTML+=
+                `
+                <a href="${listaLinks[i]["link"]}" target="_blank">➥${listaLinks[i]["link"]}</a><br>
+                `;
+                break;
+            }
+        }
+    </script>
+
+
+        <script>
+
+            let mostrarDocumentosTag=document.getElementById("documentosTag");
+
+            //Pegando a lista no localstorage
+            const listaTesteTag=JSON.parse(localStorage.getItem('lista'));
+
+            var verificacaoTagsLista=[];
+
+            function criarTag(novaTag)
+            {
+                console.log(novaTag);
+                let adicionarTag=document.getElementById("tagAdd");
+                adicionarTag.innerHTML+=
+                `
+                <option value="${novaTag}">${novaTag}</option>
+                `;
+            }
+
+            //Quando a tag é selecionado, os itens relacionados a ela aparecem
+            function selecionarTag(tag)
+            {
+                //passando pelos itens da lista
+                for(let i=0;i<listaTesteTag.length;i++)
+                {
+                    for(const item in listaTesteTag[i])
+                    {
+                        //verificando se item possui a tag selecioanda e se a tag ainda nao existe na verificacao
+                        if((tag==listaTesteTag[i]["tags"]) && (verificacaoTagsLista.includes(tag)==false))
+                        {
+                        verificacaoTagsLista.push(tag);
+                        let id=parseInt(listaTesteTag[i]["id"]);
+                        //mostrando item relacionado a tag
+                        mostrarDocumentosTag.innerHTML+=
+                        `
+                        <article class="card card-sombra">
+                            <section class="card-details">
+                                <p class="text-title" onclick="abrirModalDocs(); gerarDoc(${id});">${listaTeste[i]["titulo"]}</p>
+                                <p class="text-title-documentos" onclick="abrirModalDocs(); gerarDoc(${id});">${listaTeste[i]["texto"]}</p>
+                            </section>
+                        </article>
+                        `;
+                        break;
+                    }
+                    }
+                }
+            }
+        </script>
+
+        <!--Filtragem por meio das tags-->
+        <script>
+            let btnTags=document.getElementById("btn_tags");
+
+            //Pegando a lista no localstorage
+            const listaTag=JSON.parse(localStorage.getItem('lista'));
+
+            //lista para fericar as tags
+            var verificacaoTags=[];
+
+            //passando pelos itens da lista
+                for(let i=0;i<listaTag.length;i++)
+                {
+                    for(const item in listaTag[i])
+                    {
+                        //colocando tags dos itens na lista de verificacao
+                        if(verificacaoTags.includes(listaTag[i]["tags"])==false)
+                        {
+                        verificacaoTags.push(listaTag[i]["tags"]);
+                        console.log(verificacaoTags);
+
+                        //disponibilizando as tags criadas
+                        btnTags.innerHTML+=
+                        `
+                        <input class="btn-form" type="button" value="${listaTag[i]['tags']}" id="btnTagSelecionar" onclick="selecionarTag(this.value)">
+                        `
+                        break;
+                        }
+                    }
+                }
+        </script>
+
+        <!--Mostrando tag no formulario-->
+        <script>
+            function tag(tag)
+            {
+                let listaTag=document.getElementById("tagsAdd");
+                listaTag.innerHTML+=`${tag}|`;
+            }
+
+
+        </script>
+
+        <!--Apagando a lista inteira e funções de abrir e fechar o modal-->
+        <script>
+
+            let modalIndex=document.getElementById("modaljs");
+
+            let modalDocs=document.getElementById("modalDocsjs");
+
+            function apagar()
+            {
+                //limpando localstorage
+                localStorage.clear();
+            }
+
+            //abrindo e fechando o modal
+            function abrirModal()
+            {
+                modalIndex.style.display="block";
+            }
+
+            function fecharModal()
+            {
+                modalIndex.style.display="none";
+            }
+
+            function abrirModalDocs()
+            {
+                modalDocs.style.display="block";
+            }
+
+            function fecharModalDocs()
+            {
+                modalDocs.style.display="none";
+            }
+        </script>
+
+        <!--Visualizando dados do projeto no modal-->
+        <script>
+
+            function gerarDoc(idDoc)
+            {
+            let mostrarDocumentosModal=document.getElementById("documentosModal");
+
+            //Pegando a lista no localstorage
+            const listaTeste=JSON.parse(localStorage.getItem('lista'));
+
+            //passando pelos itens
+                for(let i=0;i<listaTeste.length;i++)
+                {
+                    for(const item in listaTeste[i])
+                    {
+                        //vefificando identificador do item clicado pelo usuario
+                        if(listaTeste[i]["id"]==idDoc)
+                        {
+                            //mostrando dados do objeto da lista
+                        mostrarDocumentosModal.innerHTML=
+                        `
+                        <p>${listaTeste[i]["titulo"]}</p><br>
+                        <pre>${listaTeste[i]["texto"]}</pre><br>
+                        <p>Data Limite: ${listaTeste[i]["data"]}</p>
+                        <p>Tags: ${listaTeste[i]["tags"]}</p>
+                        `
+                        }
+                    }
+                }
+            }
+        </script>
+
+        <!--Mostrando todos os projetos criados-->
+        <script>
+            let mostrarDocumentos=document.getElementById("documentos");
+
+            //Pegando a lista no localstorage
+            const listaTeste=JSON.parse(localStorage.getItem('lista'));
+
+            //passando pelos itens
+                for(let i=0;i<listaTeste.length;i++)
+                {
+                    for(const item in listaTeste[i])
+                    {
+                        console.log(listaTeste);
+                        //pegando o id caso o usuario clique no projeto
+                        let id=parseInt(listaTeste[i]["id"]);
+                        mostrarDocumentos.innerHTML+=
+                        `
+                        <article class="card card-sombra">
+                            <section class="card-details">
+                                <p class="text-title" onclick="abrirModalDocs(); gerarDoc(${id});">${listaTeste[i]["titulo"]}</p>
+                                <p class="text-title-documentos" onclick="abrirModalDocs(); gerarDoc(${id});">${listaTeste[i]["texto"]}</p>
+                            </section>
+                        </article>
+                        `
+                        break;
+                    }
+                }
+        </script>
+
+<!--Criando o projeto-->
+<script>
+
+    //Quando o usuario finaliza o formulario, esta funcao é chamada
+    function addArquivo(tituloA, conteudoA, linkA, dateA)
+    {
+        //gerando ID, pegando possivel arquivo, as tags e data definidos no form
+        const id = Date.now();
+
+        let capaA=document.getElementById("capaAdd");
+        let capaFile=capaA.files[0];
+        let capaURL;
+
+        if(!capaFile)
+        {
+            capaURL="null";
+        }else{
+            capaURL=URL.createObjectURL(capaFile);
+        }
+
+        let novaDateA=dateA.toString();
+
+        let tagsA=document.getElementById("tagsAdd").innerHTML;
+
+        //pegando a lista do localstorage caso exista
+        const listaTeste=JSON.parse(localStorage.getItem('lista'));
+
+        //verificando se lista existe. Se existir, adicionar objeto com novos valores na lista
+        //Senao, criar localstorage da lista, com o objeto sendo o primeiro item
+        if(listaTeste==null)
+        {
+            let lista1=
+            [
+                {
+                    "id":id,
+                    "titulo":tituloA,
+                    "data":novaDateA,
+                    "link":linkA,
+                    "tags":tagsA,
+                    "texto":conteudoA,
+                    "arq":capaURL
+                }
+            ]
+
+            localStorage.setItem("lista", JSON.stringify(lista1));
+        }else{
+            listaTeste.unshift(
+                {
+                    "id":id,
+                    "titulo":tituloA,
+                    "data":novaDateA,
+                    "link":linkA,
+                    "tags":tagsA,
+                    "texto":conteudoA,
+                    "arq":capaURL
+                })
+            localStorage.setItem("lista", JSON.stringify(listaTeste));
+        }
+    }
+</script>
+
+    </body>
+</html>

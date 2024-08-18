@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Calendario</title>
+        <meta charset="utf-8">
+        <style>
+            body{
+                background-color:#121212;
+                font-family: "Inter", sans-serif;
+            }
+            a:link{
+                color:#E2E2E2;
+                text-decoration:none;
+            }
+            a:visited{
+                color:#E2E2E2;
+            }
+            a:hover{
+                color:#3A86FF;
+            }
+            .header1{
+                position:fixed;
+                top:30px;
+                width:95%;
+                display:flex;
+                background-color:#121212;
+                flex-direction:row;
+                justify-content:end;
+                font-size:18px;
+                gap:40px;
+                color:#E2E2E2;
+                margin: 0px 30px;
+
+            }
+            .header-extra
+            {
+                position:fixed;
+                top:0;
+                height:30px;
+                width:100%;
+                background-color:#121212;
+            }
+            .btn-header1{
+                background-color:#3A86FF;
+                color:#121212;
+                border-radius: .25rem;
+                cursor:pointer;
+                transition: all 250ms;
+                width:50px;
+                height:50px;
+                font-size:25px;
+                border: 1px solid;
+            }
+            #btn-header1-id:hover{
+                transform: translateY(-1px);
+            }
+            #logo-header1{
+                margin-right: auto;
+                color:#E2E2E2;
+            }
+            .meio{
+                margin-top:60px;
+            }
+            .btns-meio{
+                display:flex;
+                flex-direction:column;
+                justify-content:space-between;
+                gap:20px;
+                float:left;
+                width:30px;
+                margin:70px;
+                margin-left:95px;
+            }
+            .btn-meio{
+                background-color:#3A86FF;
+                color:#121212;
+                border-radius: .25rem;
+                cursor:pointer;
+                transition: all 250ms;
+                width:100px;
+                height:40px;
+                font-size:17px;
+                font-weight: bold;
+                border: 1px solid;
+            }
+            .calendario{
+                color:white;
+                display:flex;
+                justify-content:center;
+                padding-right:250px;
+                margin-top:20px;
+            }
+            table, td, th {
+                border: 1px solid #ddd;
+                text-align: center;
+                border-collapse: collapse;
+                background: white;
+                color: black;
+                font-weight: bold;
+            }
+            .footer1{
+                width:95%;
+                display:flex;
+                background-color:#121212;
+                flex-direction:row;
+                justify-content:space-between;
+                font-size:18px;
+                color:#E2E2E2;
+                margin: 30px;
+            }
+            ul{
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <section>
+            <section class="header-extra"></section>
+            <header class="header1">
+                <p id="logo-header1">Gerenciador de projetos</p>
+                    <p><a href="index.html">Principal</a></p>
+                    <p><a href="aplicacao.html">Aplicação</a></p>
+            </header>
+        </section>
+
+        <!--Botoes que geram o calendario de cada mes-->
+        <section class="meio">
+        <form class="btns-meio">
+            <!--Passando o layout dos dias do mes para a funcao que cria o calendario-->
+            <input class="btn-meio" id="janeiro" type="button" onclick="criaData(1,['',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,31,'','','',''])" value="Janeiro">
+            <input class="btn-meio" id="fevereiro" type="button" onclick="criaData(2,['','','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,'','',''])" value="fevereiro">
+            <input class="btn-meio" id="marco" type="button" onclick="criaData(3,['','','','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])" value="março">
+            <input class="btn-meio" id="abril" type="button" onclick="criaData(4,['',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,'','','','',''])" value="abril">
+            <input class="btn-meio" id="maio" type="button" onclick="criaData(5,['','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,31,'',''])" value="maio">
+            <input class="btn-meio" id="junho" type="button" onclick="criaData(6,['','','','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,31])" value="junho">
+            <input class="btn-meio" id="julho" type="button" onclick="criaData(7,['',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,31,'','','',''])" value="julho">
+            <input class="btn-meio" id="agosto" type="button" onclick="criaData(8,['','','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,''])" value="agosto">
+            <input class="btn-meio" id="setembro" type="button" onclick="criaData(9,[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,'','','','',''])" value="setembro">
+            <input class="btn-meio" id="outubro" type="button" onclick="criaData(10,['','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,31,'','',''])" value="outubro">
+            <input class="btn-meio" id="novembro" type="button" onclick="criaData(11,['','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,'','','',''])" value="novembro">
+            <input class="btn-meio" id="dezembro" type="button" onclick="criaData(12,[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,16,27,28,29,30,31,'','','',''])" value="dezembro">
+        </form>
+
+        <section id="ano"></section>
+
+        </section>
+
+        <section>
+            <h1 style="color:#3A86FF;text-align:right;padding-right:650px;">2024</h1>
+        </section>
+
+        <!--O calendario-->
+        <section id="calendario" class="calendario"></section>
+
+        <section>
+            <footer class="footer1">
+                <section style="width:200px;">
+                    <p>Sobre nós</p>
+                    <p>Oferecemos serviços que ajudarão você a lidar com seus projetos!</p>
+                </section>
+                <section>
+                    <ul>
+                        <p>Links úteis</p>
+                        <li>Instagram</li>
+                        <li>𝕏</li>
+                        <li>WhatsApp</li>
+                        <li>GitHub</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <p>Guia de navegação</p>
+                        <li><a href="index.html">Principal</a></li>
+                        <li><a href="aplicacao.html">Aplicação</a></li>
+                    </ul>
+                </section>
+            </footer>
+        </section>
+
+        <script>
+            let dataAtual= new Date();
+            let novaData= dataAtual.getFullYear();
+
+            let ano=document.getElementById("ano");
+
+            ano.innerHTML=`${novaData}`;
+
+            //Pegando a lista no localstorage, como os dados que o usuario passou no
+            //formulario ficam salvos como objetos na lista do localstorage, é possível
+            //acessá-los em qualquer página da sessão de um dispositivo
+            const testeLista=JSON.parse(localStorage.getItem('lista'));
+
+            //essas funcoes verificam e determinam qual mes e dia de cada projeto foram
+            //definidos pelo usuario no formulario da aplicacao
+            function acharDataMes(listaData)
+            {
+                var mesInt=[];
+                for(let i=0;i<listaData.length;i++)
+                {
+                    for(const item in listaData[i])
+                    {
+                        let datas=listaData[i]["data"];
+                        var novaDatasMes=datas.split("-");
+                        mesInt.push(parseInt(novaDatasMes[1]));
+                        break;
+                    }
+                }
+                return mesInt;
+            }
+
+            function acharDataDia(listaData, mes)
+            {
+                var diaInt=[];
+                var titulos=[];
+                for(let i=0;i<listaData.length;i++)
+                {
+                    for(const item in listaData[i])
+                    {
+                        let datas=listaData[i]["data"];
+                        let novaDataDia=datas.split("-")
+                        if(novaDataDia[1]==mes)
+                        {
+                        diaInt.push(parseInt(novaDataDia[2]));
+                        titulos.push(listaData[i]["titulo"]);
+                        }
+                        break;
+                    }
+                }
+                return [diaInt, titulos];
+            }
+
+            function existeDia(listaDias)
+            {
+                let i, j;
+                var dias_existeDias=[];
+                for(i=0;i<1;i++)
+                {
+                    for(j=0;j<listaDias[i].length;j++)
+                    {
+                        dias_existeDias.push(listaDias[i][j]);
+                    }
+                }
+                return dias_existeDias;
+            }
+
+            function existeTitulo(listaDias)
+            {
+                let i, j;
+                var titulo_existeTitulo=[];
+                for(i=1;i<2;i++)
+                {
+                    for(j=0;j<listaDias[i].length;j++)
+                    {
+                        titulo_existeTitulo.push(listaDias[i][j]);
+                    }
+                }
+                return titulo_existeTitulo;
+            }
+
+            function criaData(mes, dias)
+            {
+
+            let calendario=document.getElementById("calendario");
+            let cont=0;
+            let i;
+            let j;
+
+            //calendario
+            calendario.innerHTML=
+            `<table cellspacing="21" cellpadding="21">
+                <tr>
+                    <th>Domingo</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th><th>Sábado</th>
+                </tr>
+                <tr id="1">
+
+                </tr>
+                <tr id="2">
+
+                </tr>
+                <tr id="3">
+
+                </tr>
+                <tr id="4">
+
+                </tr>
+                <tr id="5">
+
+                </tr>
+            </table>
+            `
+
+            let row1=document.getElementById("1");
+            let row2=document.getElementById("2");
+            let row3=document.getElementById("3");
+            let row4=document.getElementById("4");
+            let row5=document.getElementById("5");
+
+            let rows=[row1,row2,row3,row4,row5];
+
+            //gerando os dias do calendario com base na existencia de determinado mes
+            //na lista de itens criados pelo usuario
+
+            //se o mes está na lista, os dias são gerados
+            if((acharDataMes(testeLista).includes(mes)))
+            {
+
+            //passando pelos dias do mes
+            for(i=0;i<5;i++)
+            {
+
+                for(j=0;j<7;j++)
+                {
+                    console.log(existeDia(acharDataDia(testeLista)))
+                    console.log(dias[cont]);
+
+                    //verificando o dia
+                    if(existeDia(acharDataDia(testeLista, mes)).includes(dias[cont]))
+                    {
+                        let contTitulos=0;
+                        let titulos=existeTitulo(acharDataDia(testeLista, mes))
+                        console.log(titulos);
+                        //data definida pelo usuario no form da aplicacao
+                        rows[i].innerHTML+=`<td style="background-color:#E63946;">${dias[cont]}*</td>`
+                        contTitulos++;
+                    }else{
+                        //data nao definida pelo usuario no form da aplicacao
+                        rows[i].innerHTML+=`<td>${dias[cont]}</td>`
+                    }
+                    cont++;
+                }
+            }
+
+            }
+        }
+        </script>
+    </body>
+</html>
